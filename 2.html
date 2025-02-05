@@ -5,6 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Карточки и Поиск</title>
     <style>
+        .footer-a1 {
+            font-weight: 700;
+            color: white;
+            margin: 55px;
+            text-decoration: none;
+            position: relative;
+            left: 450px;
+            top: -25px; /* Для абсолютного позиционирования скрытого элемента */
+            box-shadow: 0 0 25px 0 black;
+        }
+
+        .hidden-menu {
+            display: none;
+            position: absolute;
+            background-color: black;
+            color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            top: 18px; /* Положение скрытого меню */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 999;
+        }
+
+        .footer-a1:hover .hidden-menu {
+            display: block; /* Показываем скрытое меню при наведении */
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
@@ -13,8 +42,11 @@
         .card {
             border: 1px solid #ccc;
             padding: 16px;
-            margin: 16px;
+            margin: 46px;
             border-radius: 8px;
+
+    box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 25px 0 blueviolet;
         }
 
         #search {
@@ -22,28 +54,305 @@
             padding: 8px;
             width: calc(100% - 32px);
         }
+
+
+        @import url('https://fonts.googleapis.com/css?family=Inconsolata:700');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 99%;
+  height: 100%;
+}
+
+body {
+  background: #252525;
+}
+
+.container {
+  position: absolute;
+  margin: auto;
+  top: -700px;
+  left: 0%;
+  right: 0;
+  bottom: 0;
+  width: 300px;
+  height: 100px;
+  .search {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    background: crimson;
+    border-radius: 50%;
+    transition: all 1s;
+    z-index: 4;
+    box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 25px 0 crimson;
+    &:hover {
+      cursor: pointer;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      margin: auto;
+      top: 22px;
+      right: 0;
+      bottom: 0;
+      left: 22px;
+      width: 12px;
+      height: 2px;
+      background: white;
+      transform: rotate(45deg);
+      transition: all .5s;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      margin: auto;
+      top: -5px;
+      right: 0;
+      bottom: 0;
+      left: -5px;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      border: 2px solid white;
+      transition: all .5s;
+    }
+  }
+  input {
+    font-family: 'Inconsolata', monospace;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    background: crimson;
+    color: white;
+    text-shadow: 0 0 10px crimson;
+    padding: 0 80px 0 20px;
+    border-radius: 30px;
+    box-shadow: 0 0 25px 0 crimson,
+                0 20px 25px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 0 25px 0 rgba(0, 0, 0, 0.5);
+    transition: all 1s;
+    opacity: 0;
+    z-index: 5;
+    font-weight: bolder;
+    letter-spacing: 0.1em;
+    &:hover {
+      cursor: pointer;
+    }
+    &:focus {
+      width: 300px;
+      opacity: 1;
+      cursor: text;
+    }
+    &:focus ~ .search {
+      right: -250px;
+      background: #151515;
+      z-index: 6;
+      &::before {
+        top: 0;
+        left: 0;
+        width: 25px;
+      }
+      &::after {
+        top: 0;
+        left: 0;
+        width: 25px;
+        height: 2px;
+        border: none;
+        background: white;
+        border-radius: 0%;
+        transform: rotate(-45deg);
+      }
+    }
+    &::placeholder {
+      color: white;
+      opacity: 0.5;
+      font-weight: bolder;
+    }
+  }
+}
+.card-container{
+    position: relative;
+    left: 50px;
+}
+.white{
+    color: white;
+}
+.footer-h1{
+    color: red;
+}
+
+
+
+
+#footer {
+            background-color: #333;
+            color: white;
+            position: relative;
+            bottom: -200px;
+            width: 100%;
+            height: 250px;
+            text-align: center;
+        }
+
+        #footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        #footer h3 {
+            margin: 0 0 10px;
+        }
+
+        #footer p {
+            margin: 5px 0;
+        }
+
+        #footer .social-icons {
+            list-style: none;
+            padding: 0;
+        }
+
+        #footer .social-icons li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        #footer .social-icons a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        @media (max-width: 600px) {
+            #footer h3 {
+                font-size: 1.5em;
+            }
+
+            #footer .social-icons li {
+                display: block;
+                margin: 5px 0;
+            }
+        }
+        footer{
+            position: relative;
+            top: 200px;
+            background-color: bisque;
+            margin-top: -25px;
+            height: 250px;
+        }
     </style>
 </head>
 <body>
-    <input type="text" id="search" placeholder="Поиск карточек...">
-    <div id="card-container">
+    <header>
+        <h1 class="footer-h1">📰 Новостник</h1>
+        <a href="#" class="footer-a1">Новости</a>
+        <a href="#" class="footer-a1">Читать
+            <div class="hidden-menu">
+                <p style="margin-bottom: 20px;">Статьи и интервью</p>
+                <p>Обзоры книг</p>
+            </div>
+        </a>
+        <a href="#" class="footer-a1">Смотреть
+            <div class="hidden-menu">
+                <p style="margin-bottom: 20px;">Видеоролики</p>
+                <p>Документальные фильмы</p>
+            </div>
+        </a>
+        <a href="#" class="footer-a1">Блоги
+            <div class="hidden-menu">
+                <p style="margin-bottom: 20px;">Личные блоги</p>
+                <p>Гостевые посты</p>
+            </div>
+        </a>
+        <a href="#" class="footer-a1">Стримы
+            <div class="hidden-menu">
+                <p style="margin-bottom: 20px;">Трансляции игр</p>
+                <p>Прямые эфиры</p>
+            </div>
+        </a>
+        <a href="#" class="footer-a1">Игры
+            <div class="hidden-menu">
+                <p style="margin-bottom: 20px;">Обзоры игр</p>
+                <p>Советы и трюки</p>
+            </div>
+        </a>
+        <a href="#" class="footer-a1">Читы
+            <div class="hidden-menu">
+                <p>Ресурсы и хакерские советы</p>
+            </div>
+        </a>
+        <a href="#" class="footer-a1">Помощь
+            <div class="hidden-menu">
+                <p style="margin-bottom: 20px;">Часто задаваемые вопросы</p>
+                <p>Поддержка пользователей</p>
+            </div>
+        </a>
+    </header>
+    
+    <div class="container">
+
+        <input type="text" id="search" placeholder="Search...">
+        
+        <div class="search"></div>
+        
+        </div>
+    <div id="card-container" style="position: relative; top: 100px;">
         <!-- Здесь будут карточки -->
     </div>
 
+    <footer id="footer">
+        <div class="container" style="position: relative; top: 50px;">
+            <h3>Контакты</h3>
+            <p>Телефон: +7 (XXX) XXX-XX-XX</p>
+            <p>Email: info@example.com</p>
+            <h3>Социальные сети</h3>
+            <ul class="social-icons">
+                <li><a href="#" title="Facebook">🌐</a></li>
+                <li><a href="#" title="Twitter">🐦</a></li>
+                <li><a href="#" title="Instagram">📸</a></li>
+                <li><a href="#" title="LinkedIn">🔗</a></li>
+            </ul>
+            <p>&copy; 2025 Ваше название компании. Все права защищены.</p>
+        </div>
+    </footer>
+
     <script>
         const cards = [
-            { title: "Карточка 1", description: "Описание 1", category: "Категория 1" },
-            { title: "Карточка 2", description: "Описание 2", category: "Категория 2" },
-            { title: "Карточка 3", description: "Описание 3", category: "Категория 1" },
-            { title: "Карточка 4", description: "Описание 4", category: "Категория 3" },
-            { title: "Карточка 5", description: "Описание 5", category: "Категория 2" },
-            { title: "Карточка 6", description: "Описание 6", category: "Категория 1" },
-            { title: "Карточка 7", description: "Описание 7", category: "Категория 3" },
-            { title: "Карточка 8", description: "Описание 8", category: "Категория 2" },
-            { title: "Карточка 9", description: "Описание 9", category: "Категория 1" },
-            { title: "Карточка 10", description: "Описание 10", category: "Категория 3" },
-            // Добавьте больше карточек по необходимости
+            { title: "Карточка 1", description: "маркетинг", category: "Категория 1" },
+            { title: "Карточка 2", description: "лирика", category: "Категория 2" },
+            { title: "Карточка 3", description: "ферма", category: "Категория 1" },
+            { title: "Карточка 4", description: "криптовалюта", category: "Категория 3" },
+            { title: "Карточка 5", description: "политика", category: "Категория 2" },
+            { title: "Карточка 6", description: "праздник", category: "Категория 1" },
+            { title: "Карточка 7", description: "технологии", category: "Категория 3" },
+            { title: "Карточка 8", description: "образование", category: "Категория 2" },
+            { title: "Карточка 9", description: "налоги", category: "Категория 1" },
+            { title: "Карточка 10", description: "магазин", category: "Категория 3" },
+            
         ];
+
+        let isSortedByCategory = false;
 
         function displayCards(filteredCards) {
             const container = document.getElementById('card-container');
@@ -52,10 +361,14 @@
                 const cardElement = document.createElement('div');
                 cardElement.className = 'card';
                 cardElement.innerHTML = `
-                    <h3>${card.title}</h3>
-                    <p>${card.description}</p>
-                    <span>Категория: <strong>${card.category}</strong></span>
+                <a href="#" style="text-decoration: none" onclick="slide()">
+                    <h3 class="white">${card.title}</h3>
+                    <span class="white">Описание: <strong>${card.description}</strong></span>
+                    <p></p>
+                    <span class="white">Категория: <strong>${card.category}</strong></span>
+                </a>
                 `;
+                
                 container.appendChild(cardElement);
             });
         }
@@ -70,7 +383,13 @@
             displayCards(filteredCards);
         });
 
-        // Изначально отображаем все карточки
+        
+            isSortedByCategory = !isSortedByCategory; // Переключение состояния сортировки
+            const sortedCards = isSortedByCategory 
+                ? cards.sort((a, b) => a.category.localeCompare(b.category)) // Сортировка по категории
+                : [...cards]; // Возвращаем оригинальный порядок
+            displayCards(sortedCards);
+
         displayCards(cards);
     </script>
 </body>
