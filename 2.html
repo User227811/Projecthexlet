@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карточки и Поиск</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            padding: 16px;
+            margin: 16px;
+            border-radius: 8px;
+        }
+
+        #search {
+            margin: 16px;
+            padding: 8px;
+            width: calc(100% - 32px);
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="search" placeholder="Поиск карточек...">
+    <div id="card-container">
+        <!-- Здесь будут карточки -->
+    </div>
+
+    <script>
+        const cards = [
+            { title: "Карточка 1", description: "Описание 1", category: "Категория 1" },
+            { title: "Карточка 2", description: "Описание 2", category: "Категория 2" },
+            { title: "Карточка 3", description: "Описание 3", category: "Категория 1" },
+            { title: "Карточка 4", description: "Описание 4", category: "Категория 3" },
+            { title: "Карточка 5", description: "Описание 5", category: "Категория 2" },
+            { title: "Карточка 6", description: "Описание 6", category: "Категория 1" },
+            { title: "Карточка 7", description: "Описание 7", category: "Категория 3" },
+            { title: "Карточка 8", description: "Описание 8", category: "Категория 2" },
+            { title: "Карточка 9", description: "Описание 9", category: "Категория 1" },
+            { title: "Карточка 10", description: "Описание 10", category: "Категория 3" },
+            // Добавьте больше карточек по необходимости
+        ];
+
+        function displayCards(filteredCards) {
+            const container = document.getElementById('card-container');
+            container.innerHTML = ''; // Очистить контейнер
+            filteredCards.forEach(card => {
+                const cardElement = document.createElement('div');
+                cardElement.className = 'card';
+                cardElement.innerHTML = `
+                    <h3>${card.title}</h3>
+                    <p>${card.description}</p>
+                    <span>Категория: <strong>${card.category}</strong></span>
+                `;
+                container.appendChild(cardElement);
+            });
+        }
+
+        document.getElementById('search').addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            const filteredCards = cards.filter(card =>
+                card.title.toLowerCase().includes(query) ||
+                card.description.toLowerCase().includes(query) ||
+                card.category.toLowerCase().includes(query)
+            );
+            displayCards(filteredCards);
+        });
+
+        // Изначально отображаем все карточки
+        displayCards(cards);
+    </script>
+</body>
+</html>
